@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Obsidian-Haven — Log in or Sign up</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#151f3f">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icon-192.png">
+<style>
+@font-face{font-family:Poppins;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLDz8Z1xlFQ.woff2)format("woff2")}
+@font-face{font-family:Poppins;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/poppins/v24/pxiEyp8kv8JHgFVrJJfecg.woff2)format("woff2")}
+@font-face{font-family:Poppins;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLEj6Z1xlFQ.woff2)format("woff2")}
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;min-height:100svh;display:grid;place-items:center;padding:20px;color:#fff;font-family:Poppins,system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:radial-gradient(120% 80% at 50% 0,#6372c8 0,#8d86d3 22%,#151f3f 62%) #151f3f}
+.box{width:min(420px,100%);padding:30px 26px;border-radius:28px;background:rgba(21,31,63,.78);border:1px solid rgba(255,255,255,.22);box-shadow:0 20px 60px rgba(8,10,40,.5)}
+.brand{display:flex;align-items:center;gap:10px;justify-content:center;font-weight:600;letter-spacing:.08em;font-size:18px;color:#fff;text-decoration:none;margin-bottom:22px}
+.brand img{width:34px;height:34px}
+.tabs{display:flex;padding:4px;border-radius:999px;background:rgba(255,255,255,.1);margin-bottom:22px}
+.tabs button{flex:1;padding:10px;border:0;border-radius:999px;background:none;color:#fff;font:400 14px Poppins,sans-serif;cursor:pointer}
+.tabs button.on{background:#fff;color:#2b2a52}
+h1{font-weight:300;font-size:26px;margin-bottom:6px}
+.sub{font-size:13px;color:#c9c8e6;margin-bottom:18px}
+label{display:block;font-size:12px;color:#c9c8e6;margin:12px 0 6px}
+input{width:100%;padding:13px 15px;border-radius:14px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;font:400 15px Poppins,sans-serif;outline:0}
+input:focus{border-color:#e394a3;background:rgba(255,255,255,.14)}
+.go{width:100%;margin-top:20px;padding:14px;border:0;border-radius:999px;background:#fff;color:#2b2a52;font:600 15px Poppins,sans-serif;cursor:pointer}
+.go:active{transform:scale(.98)}
+.err{min-height:18px;margin-top:12px;font-size:13px;color:#ffb3c0}
+.sw{margin-top:16px;text-align:center;font-size:13px;color:#c9c8e6}.sw a{color:#fff;text-decoration:underline;cursor:pointer}
+.hide{display:none}
+</style></head><body>
+<main class="box">
+<a class="brand" href="index.html"><img src="icon.svg" alt="">OBSIDIAN-HAVEN</a>
+<div id="in" class="hide"><h1>Welcome back</h1><p class="sub" id="who"></p><button class="go" id="cont">Continue to site</button><button class="go" id="out" style="background:none;color:#fff;border:1px solid rgba(255,255,255,.35)">Log out</button></div>
+<div id="forms">
+<div class="tabs"><button id="tl">Log in</button><button id="ts">Sign up</button></div>
+<form id="fl" novalidate><h1>Log in</h1><p class="sub">Access your saved homes and visits.</p>
+<label for="le">Email</label><input id="le" type="email" autocomplete="email" required>
+<label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password" required>
+<div class="err" id="el" role="alert"></div><button class="go" type="submit">Log in</button>
+<p class="sw">New here? <a id="to-s">Create an account</a></p></form>
+<form id="fs" class="hide" novalidate><h1>Create account</h1><p class="sub">Join Obsidian-Haven in under a minute.</p>
+<label for="sn">Full name</label><input id="sn" autocomplete="name" required>
+<label for="se">Email</label><input id="se" type="email" autocomplete="email" required>
+<label for="sp">Password (8+ characters)</label><input id="sp" type="password" autocomplete="new-password" required>
+<label for="sc">Confirm password</label><input id="sc" type="password" autocomplete="new-password" required>
+<div class="err" id="es" role="alert"></div><button class="go" type="submit">Sign up</button>
+<p class="sw">Have an account? <a id="to-l">Log in</a></p></form>
+</div></main>
+<script>
+const $=i=>document.getElementById(i),LS=localStorage;
+const users=()=>{try{return JSON.parse(LS.oh_users||"{}")}catch{return{}}},sess=()=>{try{return JSON.parse(LS.oh_session||"null")}catch{return null}};
+const hash=async p=>{try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("oh:"+p));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch{return"b:"+btoa(unescape(encodeURIComponent(p)))}};
+const ok=e=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e);
+const done=u=>{LS.oh_session=JSON.stringify({name:u.name,email:u.email});location.href="index.html"};
+function view(){const s=sess();$("in").classList.toggle("hide",!s);$("forms").classList.toggle("hide",!!s);if(s)$("who").textContent="Signed in as "+s.name+" ("+s.email+")";
+ const su=location.hash==="#signup";$("fl").classList.toggle("hide",su);$("fs").classList.toggle("hide",!su);$("tl").classList.toggle("on",!su);$("ts").classList.toggle("on",su);$("el").textContent=$("es").textContent=""}
+$("tl").onclick=$("to-l").onclick=()=>{location.hash="login"};$("ts").onclick=$("to-s").onclick=()=>{location.hash="signup"};
+addEventListener("hashchange",view);view();
+$("cont").onclick=()=>location.href="index.html";$("out").onclick=()=>{delete LS.oh_session;view()};
+$("fl").onsubmit=async e=>{e.preventDefault();const em=$("le").value.trim().toLowerCase(),u=users()[em];
+ if(!ok(em)||!$("lp").value)return $("el").textContent="Enter your email and password.";
+ if(!u||u.h!==await hash($("lp").value))return $("el").textContent="Incorrect email or password.";done({name:u.name,email:em})};
+$("fs").onsubmit=async e=>{e.preventDefault();const n=$("sn").value.trim(),em=$("se").value.trim().toLowerCase(),p=$("sp").value,er=$("es");
+ if(n.length<2)return er.textContent="Please enter your full name.";if(!ok(em))return er.textContent="Enter a valid email address.";
+ if(p.length<8)return er.textContent="Password must be at least 8 characters.";if(p!==$("sc").value)return er.textContent="Passwords don't match.";
+ const all=users();if(all[em])return er.textContent="That email already has an account. Try logging in.";
+ all[em]={name:n,h:await hash(p)};LS.oh_users=JSON.stringify(all);done({name:n,email:em})};
+if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+</script></body></html>

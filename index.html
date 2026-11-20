@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
-<title>Verane — Invest in Skyline</title>
+<title>Obsidian-Haven — Invest in Skyline</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#151f3f"><meta name="description" content="Obsidian-Haven — premium homes and towers. Invest in Skyline.">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
 @font-face{font-family:Poppins;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLDz8Z1xlFQ.woff2)format("woff2")}
 @font-face{font-family:Poppins;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/poppins/v24/pxiEyp8kv8JHgFVrJJfecg.woff2)format("woff2")}
@@ -15,8 +17,8 @@ html,body{background:#151f3f;color:#fff;font-family:Poppins,system-ui,sans-serif
 a{color:inherit;text-decoration:none}
 .nav{position:fixed;left:0;top:0;width:100%;height:0;z-index:20;opacity:0;white-space:nowrap}
 .nav>*{position:absolute}
-.logo{font-weight:600;font-size:max(14px,calc(22px*var(--s)));letter-spacing:.12em}
-.pill{display:flex;gap:calc(4px*var(--s));padding:calc(5px*var(--s));border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.logo{display:flex;align-items:center;gap:calc(8px*var(--s));font-weight:600;font-size:max(14px,calc(19px*var(--s)));letter-spacing:.08em}.logo img{width:max(20px,calc(30px*var(--s)));height:max(20px,calc(30px*var(--s)))}
+.pill{display:flex;gap:calc(4px*var(--s));padding:calc(5px*var(--s));border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35)}
 .pill a{font-weight:400;font-size:max(11px,calc(15px*var(--s)));padding:calc(10px*var(--s)) calc(20px*var(--s));line-height:1.1;border-radius:999px}
 .pill a.on{background:#fff;color:#2b2a52}
 .eng{display:flex;align-items:center;gap:calc(8px*var(--s));font-weight:400;font-size:max(11px,calc(15px*var(--s)))}
@@ -38,13 +40,13 @@ body.p .pill a{font-size:max(11.5px,calc(12px*var(--s)));padding:calc(8px*var(--
 .shade{position:absolute;left:0;bottom:0;width:100%;height:34%;background:linear-gradient(to top,rgba(30,20,60,.55),transparent);display:none;pointer-events:none}
 body.p .shade{display:block}
 #room{display:none}
-#room::before,#room::after{content:"";position:absolute;left:-4000px;width:calc(100% + 8000px)}
-#room::before{bottom:100%;height:6000px;background:#151f3f}
-#room::after{top:100%;height:6000px;background:linear-gradient(#4a3d6a,#2e2850 900px,#221d40)}
+#room::before,#room::after{content:"";position:absolute;left:-1500px;width:calc(100% + 3000px)}
+#room::before{bottom:100%;height:1500px;background:#151f3f}
+#room::after{top:100%;height:1500px;background:linear-gradient(#4a3d6a,#2e2850 900px,#221d40)}
 #room{background:linear-gradient(to bottom,transparent 75%,#4a3d6a 75%)}
-#room .e{position:absolute;top:0;height:100%;width:4000px;background:linear-gradient(#151f3f,#121b3b 58%,#272548 61%,#4a3d6a)}
-#room .e1{left:-4000px}#room .e2{left:100%}
-#roomCv{position:absolute;left:0;top:0;width:100%;height:100%;-webkit-mask-image:linear-gradient(to bottom,#000 86%,transparent 100%);mask-image:linear-gradient(to bottom,#000 86%,transparent 100%)}
+#room .e{position:absolute;top:0;height:100%;width:1500px;background:linear-gradient(#151f3f,#121b3b 58%,#272548 61%,#4a3d6a)}
+#room .e1{left:-1500px}#room .e2{left:100%}
+#roomCv{position:absolute;left:0;top:0;width:100%;height:100%;}
 #build{display:flex;align-items:center;gap:calc(28px*var(--s));white-space:nowrap}
 .thumb{position:relative;flex:none;width:calc(121px*var(--s));height:calc(95px*var(--s));border-radius:calc(14px*var(--s));background:var(--sheet) 2% 2%/205% 205%;box-shadow:0 calc(6px*var(--s)) calc(18px*var(--s)) rgba(30,20,70,.35)}
 .thumb svg{position:absolute;left:50%;top:50%;width:calc(34px*var(--s));height:calc(38px*var(--s));transform:translate(-40%,-50%)}
@@ -67,12 +69,15 @@ body.p #para{font-size:max(12px,calc(12.5px*var(--s)))}
 .card.c .row{flex-direction:column;gap:0}
 .card.c .pr{border:0;padding:0;line-height:1.35}
 .card.c .sp{gap:max(7px,calc(16px*var(--cs)))}
+.card{cursor:pointer}.pill a,.sign,.logo{cursor:pointer}
+dialog{border:0;border-radius:24px;padding:26px;width:min(400px,92vw);background:#fff;color:#24233a;font-family:Poppins,system-ui,sans-serif}dialog::backdrop{background:rgba(10,12,35,.6)}dialog h2{font-weight:500;font-size:20px;margin-bottom:8px}dialog p{font-size:14px;line-height:1.5;color:#55546a}.acts{display:flex;gap:10px;margin-top:20px}.acts button{flex:1;padding:12px;border-radius:999px;border:1px solid #d9d8e6;background:#fff;color:#2b2a52;font:400 14px Poppins,sans-serif;cursor:pointer}.acts button.pri{background:#2b2a52;color:#fff;border-color:#2b2a52}
+html{overscroll-behavior:none}
 </style></head><body>
 <header class="nav" id="nav">
-<a class="logo" href="#">VERANE</a>
+<a class="logo" href="index.html"><img src="icon.svg" alt="">OBSIDIAN-HAVEN</a>
 <nav class="pill"><a class="on" href="#">Home</a><a href="#">About Us</a><a href="#">Property List</a><a href="#">Contact Us</a></nav>
 <span class="eng">Eng<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><ellipse cx="12" cy="12" rx="4.2" ry="9.5"/><path d="M2.5 12h19M4 7h16M4 17h16"/></svg></span>
-<a class="sign" href="#">Sign up</a>
+<a class="sign" id="sign" href="auth.html#signup">Sign up</a>
 </header>
 <main id="story"><div class="stage" id="stage">
 <div class="L" id="view"><div class="sky" id="sky"></div><img id="heroImg" alt="" crossorigin="anonymous"><video id="heroVid" muted loop playsinline preload="auto" crossorigin="anonymous" aria-hidden="true"></video></div>
@@ -84,6 +89,7 @@ body.p #para{font-size:max(12px,calc(12.5px*var(--s)))}
 <div class="L" id="build"><div class="thumb"><svg viewBox="0 0 34 38"><path d="M7 5L29 19L7 33Z" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round"/></svg></div><b>Shape Your<br>Future.</b></div>
 <div class="L" id="para"><span>Discover remarkable homes and towers set over a calm lit harbor,</span> <span>from quiet garden villas to lofty sky suites with sweeping views. A</span> <span>calm advisor guides you from the very first visit to the final</span> <span>key, so you find the place that fits.</span></div>
 </div></main>
+<dialog id="dlg"><h2 id="dt"></h2><p id="db"></p><div class="acts"><button id="dx">Close</button><button id="dgo" class="pri"></button></div></dialog>
 <script>
 const $=i=>document.getElementById(i),cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),lerp=(a,b,t)=>a+(b-a)*t,seg=(t,a,b)=>cl((t-a)/(b-a)),ss=(a,b,x)=>{x=cl((x-a)/(b-a));return x*x*(3-2*x)};
 function bez(a,b,c,d){const f=(t,p,q)=>3*p*t*(1-t)**2+3*q*t*t*(1-t)+t**3,df=(t,p,q)=>3*p*(1-t)**2+6*(q-p)*t*(1-t)+3*(1-q)*t*t;return x=>{if(x<=0)return 0;if(x>=1)return 1;let t=x;for(let i=0;i<8;i++){const e=f(t,a,c)-x,k=df(t,a,c);if(Math.abs(e)<1e-5||!k)break;t-=e/k}return f(cl(t),b,d)}}
@@ -109,7 +115,7 @@ const E={pan:bez(.45,.6,.65,1),r1:bez(.08,.9,.45,.95),r2:bez(.45,0,.55,1),nav:be
 let W,H,phone,s,sc,pw,ph,ox,oy,g,sEnd,gyEnd,navBottom,L={},row1=false,ctx=document.createElement("canvas").getContext("2d");
 const pos=(el,l,r,t,b)=>{el.style.left=l==null?"auto":l+"px";el.style.right=r==null?"auto":r+"px";el.style.top=t==null?"auto":t+"px";el.style.bottom=b==null?"auto":b+"px"};
 function meas(font,txt){ctx.font=font;const q=ctx.measureText(txt);return{asc:q.actualBoundingBoxAscent/100,l:q.actualBoundingBoxLeft/100,w:(q.actualBoundingBoxLeft+q.actualBoundingBoxRight)/100,fa:q.fontBoundingBoxAscent/100,fd:q.fontBoundingBoxDescent/100,desc:q.actualBoundingBoxDescent/100}}
-function layout(){
+function layout(){dirty=true;
 W=innerWidth;H=stage.clientHeight;phone=H>1.15*W;
 s=phone?Math.min(W/390,H/700,1.9):cl(Math.min(W/1440,H/900),.62,1.35);
 root.style.setProperty("--s",s);root.style.setProperty("--travel",3.4*H+"px");document.body.classList.toggle("p",phone);
@@ -156,7 +162,7 @@ else{gyEnd=g.y;const top=navBottom+14*s,bot=H-12*s,gap=12*s;let cs=s,p=1;const f
 L.cards.forEach((c,i)=>{c.el=cards[i];c.off=c.right?W-c.x+40:-(c.x+c.w+40)});
 }
 // state
-let I0=null,ready=false,pCur=0,last=0,video=false;
+let I0=null,ready=false,pCur=0,last=0,dirty=true,lastP=-1;
 const fin=()=>mq.matches;
 function frame(now){
 const dt=Math.min(.1,(now-last)/1000||.016);last=now;
@@ -164,6 +170,7 @@ const red=fin();let I=red?99:(ready?(now-I0)/1000:0);
 const r=story.getBoundingClientRect(),pT=cl(-r.top/Math.max(1,story.offsetHeight-H));
 if(red)pCur=pT>=.5?1:0;else{pCur+=(pT-pCur)*(1-Math.exp(-dt/.187));if(Math.abs(pT-pCur)<1e-4)pCur=pT}
 const T=red?(pCur?13.4:6.8):6.8+pCur*6.6;
+if(!(dirty||I<6.1||pCur!==lastP)){requestAnimationFrame(frame);return}lastP=pCur;dirty=false;
 // intro
 const pe=E.pan(seg(I,0,2.6)),panY=lerp(.355*H,0,pe),panS=lerp(1.13,1,pe);
 let off=I<1.15?.45:I<2.2?lerp(.45,-.063,E.r1(seg(I,1.15,2.2))):lerp(-.063,0,E.r2(seg(I,2.2,3.5)));off*=H;if(I>=3.5)off=0;
@@ -196,8 +203,17 @@ vid.addEventListener("playing",()=>{if(!fin())vid.classList.add("on")});
 mq.addEventListener&&mq.addEventListener("change",vidCheck);
 // room keying
 const ri=new Image();ri.crossOrigin="anonymous";ri.onload=()=>{try{const cv=$("roomCv"),c=cv.getContext("2d");c.drawImage(ri,0,0,2048,1360);const im=c.getImageData(0,0,2048,1360),d=im.data;
-for(let i=0;i<d.length;i+=4){const r=d[i]/255,g2=d[i+1]/255,b=d[i+2]/255,m=Math.max(r,b),k=g2-m;if(k>.05){d[i+3]=255*(1-(x=>x*x*(3-2*x))(cl((k-.1)/.28)));d[i+1]=Math.min(g2,m*.96)*255}}c.putImageData(im,0,0)}catch(e){console.warn(e)}};
+for(let i=0;i<d.length;i+=4){const r=d[i]/255,g2=d[i+1]/255,b=d[i+2]/255,m=Math.max(r,b),k=g2-m;if(k>.05){d[i+3]=255*(1-(x=>x*x*(3-2*x))(cl((k-.1)/.28)));d[i+1]=Math.min(g2,m*.96)*255}}c.putImageData(im,0,0);c.globalCompositeOperation="destination-out";const gr=c.createLinearGradient(0,1360*.86,0,1360);gr.addColorStop(0,"rgba(0,0,0,0)");gr.addColorStop(1,"#000");c.fillStyle=gr;c.fillRect(0,1360*.86,2048,1360*.14)}catch(e){console.warn(e)}};
 ri.src=prox(U.room,2048);
+// functionality
+const sess=()=>{try{return JSON.parse(localStorage.oh_session||"null")}catch{return null}},dlgEl=$("dlg");
+function openDlg(t,b,btn,fn){$("dt").textContent=t;$("db").textContent=b;const g=$("dgo");g.style.display=btn?"":"none";g.textContent=btn||"";g.onclick=()=>{dlgEl.close();fn&&fn()};dlgEl.open?0:dlgEl.showModal()}
+$("dx").onclick=()=>dlgEl.close();dlgEl.addEventListener("click",e=>{if(e.target===dlgEl)dlgEl.close()});
+const me=sess();if(me){sign.textContent=me.name.split(" ")[0];sign.href="#";sign.title="Click to log out";sign.onclick=e=>{e.preventDefault();openDlg("Log out?","You are signed in as "+me.email+".","Log out",()=>{localStorage.removeItem("oh_session");location.reload()})}}
+const acts=[()=>scrollTo({top:0,behavior:"smooth"}),()=>openDlg("About Obsidian-Haven","We pair calm, expert advisors with remarkable homes and towers, from quiet garden villas to lofty sky suites."),()=>scrollTo({top:story.offsetHeight,behavior:"smooth"}),()=>openDlg("Contact us","Email hello@obsidian-haven.example and an advisor will reply within one business day.")];
+pill.querySelectorAll("a").forEach((a,i)=>a.onclick=e=>{e.preventDefault();acts[i]()});
+cards.forEach((el,i)=>el.onclick=()=>{const c=CD[i];openDlg(c[0],`${c[1]} · ${c[2]} · ${c[3]} bed, ${c[4]} bath, ${c[5]}.`,"Book a visit",()=>{if(!sess()){location.href="auth.html#login";return}const v=JSON.parse(localStorage.oh_visits||"[]");v.push(c[0]);localStorage.oh_visits=JSON.stringify(v);openDlg("Visit requested","We'll contact you at "+sess().email+" to confirm a time for "+c[0]+".")})});
+if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
 // boot
 heroImg.src=towerImg.src=prox(U.hero,2048);vid.src=U.vid;
 const fl=["300 16px Poppins","400 16px Poppins","500 16px Poppins","600 16px Poppins",'400 16px "Pinyon Script"',"330 16px Outfit"].map(f=>document.fonts.load(f).catch(()=>{}));
